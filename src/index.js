@@ -60,3 +60,30 @@ let ordinalRank = getOrdinalRank(date);
 //Change date
 let currentDate = document.querySelector("h5");
 currentDate.innerHTML = `${day}, ${month} ${date}${ordinalRank} ${year}, ${hour}:${minute}`;
+
+//Change Fahrenheit and Celcius
+function changeToCelsius(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#current-temperature");
+  temperature.innerHTML = "19";
+  let activeDegree = document.querySelector("#celsius");
+  activeDegree.classList.add("active-degree");
+  let inactiveDegree = document.querySelector("#fahrenheit");
+  inactiveDegree.classList.remove("active-degree");
+}
+
+function changeToFahrenheit(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#current-temperature");
+  temperature.innerHTML = "66";
+  let activeDegree = document.querySelector("#fahrenheit");
+  activeDegree.classList.add("active-degree");
+  let inactiveDegree = document.querySelector("#celsius");
+  inactiveDegree.classList.remove("active-degree");
+}
+
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", changeToCelsius);
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", changeToFahrenheit);
