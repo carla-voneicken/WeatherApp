@@ -26,7 +26,7 @@ input {
   background-color: #e3f6f4;
   border: 3px solid #6bcec6;
   margin: 60px auto;
-  padding: 40px;
+  padding: 40px 40px;
 }
 
 .submit-button {
