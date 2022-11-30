@@ -1,1 +1,130 @@
+h1 {
+  color: #1ab2a8;
+  font-weight: 700;
+  font-size: 48px;
+  margin: 0 auto;
+}
 
+h5 {
+  font-weight: 500;
+  font-size: 16px;
+  color: #6f7474;
+}
+
+input {
+  background-color: #e3f6f4;
+  border: 2px solid #6bcec6;
+  border-radius: 5px;
+  color: #6f7474;
+  padding: 2px 4px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.container {
+  width: 700px;
+  background-color: #e3f6f4;
+  border: 3px solid #6bcec6;
+  margin: 60px auto;
+  padding: 40px;
+}
+
+.submit-button {
+  background-color: #6bcec6;
+  color: #e3f6f4;
+  border: 2px solid #6bcec6;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: #e3f6f4;
+  border: 2px solid #6bcec6;
+  border-radius: 5px;
+  color: #6f7474;
+  transition: all 200ms ease-in-out;
+}
+
+.current-location-button {
+  background-color: #6bcec6;
+  color: #e3f6f4;
+  border: 2px solid #6bcec6;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  width: fit-content;
+  display: inline-block;
+}
+
+.current-location-button:hover {
+  cursor: pointer;
+  background-color: #e3f6f4;
+  border: 2px solid #6bcec6;
+  border-radius: 5px;
+  color: #6f7474;
+  transition: all 200ms ease-in-out;
+}
+
+.current-temperature {
+  color: #1ab2a8;
+  font-weight: 700;
+  font-size: 40px;
+  margin: 0 auto;
+  padding: 30px 20px 20px 20px;
+  line-height: normal;
+}
+
+.degree {
+  font-size: 20px;
+  font-weight: 400;
+  color: #1ab2a8;
+}
+
+.active-degree {
+  font-size: 25px;
+  font-weight: 700;
+  color: #1ab2a8;
+}
+
+a {
+  color: #1ab2a8;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #60a2d7;
+}
+
+.other-current-data {
+  margin: 0 auto;
+  color: #6f7474;
+  padding: 20px;
+}
+
+.image-current-weather {
+  width: 180px;
+  display: block;
+  margin: 20px auto;
+}
+
+.image-forecast {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.date-forecast {
+  text-align: center;
+  padding-top: 10px;
+  color: #1ab2a8;
+  font-weight: 500;
+  margin: 0 auto;
+}
+
+.temperature-forecast {
+  text-align: center;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  color: #6f7474;
+}
