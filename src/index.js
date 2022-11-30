@@ -87,3 +87,59 @@ celsius.addEventListener("click", changeToCelsius);
 
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", changeToFahrenheit);
+
+//Display current temperature, city name, etc.
+function displayCurrentWeather(response) {
+  document.querySelector("#current-temperature").innerHTML = Math.round(
+    response.data.main.temp
+  );
+
+  document.querySelector("#feels-like").innerHTML = Math.round(
+    response.data.main.feels_like
+  );
+
+  document.querySelector("#humidity").innerHTML = Math.round(
+    response.data.main.humidity
+  );
+
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed * 3.6
+  );
+
+  document.querySelector("#city").innerHTML = response.data.name;
+}
+
+//Get data from weather API for specific city
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  getWeatherData(cityInput.value);
+}
+
+function getWeatherData(city) {
+  let unit = "metric";
+  let apiKey = "b400ae3b711a616262d18b0ca2cbe78f";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+
+  axios.get(apiUrl).then(displayCurrentWeather);
+}
+
+let cityForm = document.querySelector("#search-city");
+cityForm.addEventListener("submit", handleSubmit);
+
+//Get data from weather API for current location
+function getWeatherDataCurrentLocation(position) {
+  let unit = "metric";
+  let apiKey = "b400ae3b711a616262d18b0ca2cbe78f";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${unit}`;
+
+  axios.get(apiUrl).then(displayCurrentWeather);
+}
+
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("click", function () {
+  navigator.geolocation.getCurrentPosition(getWeatherDataCurrentLocation);
+});
+
+//Display default city on loading
+getWeatherData("Berlin");
