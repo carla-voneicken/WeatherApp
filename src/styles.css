@@ -128,3 +128,7 @@ a:hover {
   padding-bottom: 10px;
   color: #6f7474;
 }
+
+.reference {
+  font-family: "Courier New", Courier, monospace;
+}
