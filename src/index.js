@@ -91,22 +91,22 @@ fahrenheit.addEventListener("click", changeToFahrenheit);
 //Display current temperature, city name, etc.
 function displayCurrentWeather(response) {
   document.querySelector("#current-temperature").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
 
   document.querySelector("#feels-like").innerHTML = Math.round(
-    response.data.main.feels_like
+    response.data.temperature.feels_like
   );
 
   document.querySelector("#humidity").innerHTML = Math.round(
-    response.data.main.humidity
+    response.data.temperature.humidity
   );
 
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed * 3.6
   );
 
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
 }
 
 //Get data from weather API for specific city
@@ -118,8 +118,8 @@ function handleSubmit(event) {
 
 function getWeatherData(city) {
   let unit = "metric";
-  let apiKey = "b400ae3b711a616262d18b0ca2cbe78f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+  let apiKey = "004446411fd5455tcb3a0d7cfdoca57a";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
 
   axios.get(apiUrl).then(displayCurrentWeather);
 }
@@ -129,9 +129,11 @@ cityForm.addEventListener("submit", handleSubmit);
 
 //Get data from weather API for current location
 function getWeatherDataCurrentLocation(position) {
+  let lon = position.coords.longitude;
+  let lat = position.coords.latitude;
   let unit = "metric";
-  let apiKey = "b400ae3b711a616262d18b0ca2cbe78f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${unit}`;
+  let apiKey = "004446411fd5455tcb3a0d7cfdoca57a";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=${unit}`;
 
   axios.get(apiUrl).then(displayCurrentWeather);
 }
