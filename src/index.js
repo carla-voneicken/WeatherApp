@@ -90,6 +90,7 @@ fahrenheit.addEventListener("click", changeToFahrenheit);
 
 //Display current temperature, city name, etc.
 function displayCurrentWeather(response) {
+  console.log(response);
   document.querySelector("#current-temperature").innerHTML = Math.round(
     response.data.temperature.current
   );
@@ -107,6 +108,8 @@ function displayCurrentWeather(response) {
   );
 
   document.querySelector("#city").innerHTML = response.data.city;
+
+  document.querySelector("#country").innerHTML = response.data.country;
 }
 
 //Get data from weather API for specific city
