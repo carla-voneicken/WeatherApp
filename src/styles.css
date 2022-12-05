@@ -1,22 +1,9 @@
-#city {
-  color: #1ab2a8;
-  font-weight: 700;
-  font-size: 48px;
-  margin: 0 auto;
-}
-
-#country {
-  color: #1ab2a8;
-  font-weight: 500;
-  font-size: 24px;
-  margin: 0 auto;
-  padding-left: 10px;
-}
-
-h5 {
-  font-weight: 500;
-  font-size: 16px;
-  color: #6f7474;
+.container {
+  width: 700px;
+  background-color: #e3f6f4;
+  border: 3px solid #6bcec6;
+  margin: 60px auto 10px;
+  padding: 40px;
 }
 
 input {
@@ -27,14 +14,6 @@ input {
   padding: 2px 4px;
   font-weight: 500;
   margin-bottom: 10px;
-}
-
-.container {
-  width: 700px;
-  background-color: #e3f6f4;
-  border: 3px solid #6bcec6;
-  margin: 60px auto 10px;
-  padding: 40px;
 }
 
 .submit-button {
@@ -74,6 +53,31 @@ input {
   transition: all 200ms ease-in-out;
 }
 
+#city {
+  color: #1ab2a8;
+  font-weight: 700;
+  font-size: 48px;
+  margin: 0 auto;
+}
+
+#country {
+  color: #1ab2a8;
+  font-weight: 500;
+  font-size: 24px;
+  margin: 0 auto;
+  padding-left: 10px;
+}
+
+h5 {
+  font-weight: 500;
+  font-size: 16px;
+  color: #6f7474;
+}
+
+div.current-temperature {
+  padding-top: 10px;
+}
+
 .current-temperature {
   color: #1ab2a8;
   font-weight: 700;
@@ -95,13 +99,14 @@ input {
   color: #1ab2a8;
 }
 
-a {
+#description {
+  display: inline-block;
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 16px;
   color: #1ab2a8;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #60a2d7;
+  position: relative;
+  bottom: 20px;
 }
 
 .other-current-data {
@@ -142,4 +147,13 @@ a:hover {
   display: block;
   margin: 0 auto;
   text-align: center;
+}
+
+a {
+  color: #1ab2a8;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #60a2d7;
 }

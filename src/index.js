@@ -108,6 +108,9 @@ function displayCurrentWeather(response) {
   document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#country").innerHTML = response.data.country;
 
+  document.querySelector("#description").innerHTML =
+    response.data.condition.description;
+
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", `images/${response.data.condition.icon}.png`);
   iconElement.setAttribute("alt", `${response.data.condition.icon}`);
