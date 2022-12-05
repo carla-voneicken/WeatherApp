@@ -81,7 +81,7 @@ div.current-temperature {
 .current-temperature {
   color: #1ab2a8;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 50px;
   margin: 0 auto;
   padding: 30px 20px 20px 20px;
   line-height: normal;
@@ -106,7 +106,7 @@ div.current-temperature {
   font-size: 16px;
   color: #1ab2a8;
   position: relative;
-  bottom: 20px;
+  bottom: 30px;
 }
 
 .other-current-data {
