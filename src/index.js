@@ -109,11 +109,8 @@ function displayCurrentWeather(response) {
   document.querySelector("#country").innerHTML = response.data.country;
 
   let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute(
-    "src",
-    `images/${response.data.condition.description}.png`
-  );
-  iconElement.setAttribute("alt", `${response.data.condition.description}`);
+  iconElement.setAttribute("src", `images/${response.data.condition.icon}.png`);
+  iconElement.setAttribute("alt", `${response.data.condition.icon}`);
 }
 
 //Get data from weather API for specific city
