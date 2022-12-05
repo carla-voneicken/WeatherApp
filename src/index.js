@@ -98,18 +98,22 @@ function displayCurrentWeather(response) {
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.temperature.feels_like
   );
-
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.temperature.humidity
   );
-
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed * 3.6
   );
 
   document.querySelector("#city").innerHTML = response.data.city;
-
   document.querySelector("#country").innerHTML = response.data.country;
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `images/${response.data.condition.description}.png`
+  );
+  iconElement.setAttribute("alt", `${response.data.condition.description}`);
 }
 
 //Get data from weather API for specific city
