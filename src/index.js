@@ -65,7 +65,7 @@ currentDate.innerHTML = `${day}, ${month} ${date}${ordinalRank} ${year}, ${hour}
 function changeToCelsius(event) {
   event.preventDefault();
   let temperature = document.querySelector("#current-temperature");
-  temperature.innerHTML = "19";
+  temperature.innerHTML = Math.round(celsiusTemperature);
   let activeDegree = document.querySelector("#celsius");
   activeDegree.classList.add("active-degree");
   let inactiveDegree = document.querySelector("#fahrenheit");
@@ -75,7 +75,7 @@ function changeToCelsius(event) {
 function changeToFahrenheit(event) {
   event.preventDefault();
   let temperature = document.querySelector("#current-temperature");
-  temperature.innerHTML = "66";
+  temperature.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
   let activeDegree = document.querySelector("#fahrenheit");
   activeDegree.classList.add("active-degree");
   let inactiveDegree = document.querySelector("#celsius");
@@ -90,7 +90,8 @@ fahrenheit.addEventListener("click", changeToFahrenheit);
 
 //Display current temperature, city name, etc.
 function displayCurrentWeather(response) {
-  console.log(response);
+  celsiusTemperature = response.data.temperature.current;
+
   document.querySelector("#current-temperature").innerHTML = Math.round(
     response.data.temperature.current
   );
@@ -149,6 +150,8 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", function () {
   navigator.geolocation.getCurrentPosition(getWeatherDataCurrentLocation);
 });
+
+let celsiusTemperature = null;
 
 //Display default city on loading
 getWeatherData("Berlin");
