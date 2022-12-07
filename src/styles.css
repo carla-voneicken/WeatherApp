@@ -81,10 +81,16 @@ div.current-temperature {
 .current-temperature {
   color: #1ab2a8;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 48px;
   margin: 0 auto;
   padding: 30px 20px 20px 20px;
   line-height: normal;
+  text-align: right;
+}
+
+.current-temperature-smaller {
+  letter-spacing: -1px;
+  font-size: 34px;
 }
 
 .degree {

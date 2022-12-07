@@ -70,16 +70,37 @@ function changeToCelsius(event) {
   activeDegree.classList.add("active-degree");
   let inactiveDegree = document.querySelector("#fahrenheit");
   inactiveDegree.classList.remove("active-degree");
+
+  if (celsiusTemperature < -9 || celsiusTemperature > 99) {
+    document
+      .querySelector("#current-temperature")
+      .classList.add("current-temperature-smaller");
+  } else {
+    document
+      .querySelector("#current-temperature")
+      .classList.remove("current-temperature-smaller");
+  }
 }
 
 function changeToFahrenheit(event) {
   event.preventDefault();
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
   let temperature = document.querySelector("#current-temperature");
-  temperature.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
+  temperature.innerHTML = fahrenheitTemperature;
   let activeDegree = document.querySelector("#fahrenheit");
   activeDegree.classList.add("active-degree");
   let inactiveDegree = document.querySelector("#celsius");
   inactiveDegree.classList.remove("active-degree");
+
+  if (fahrenheitTemperature < -9 || fahrenheitTemperature > 99) {
+    document
+      .querySelector("#current-temperature")
+      .classList.add("current-temperature-smaller");
+  } else {
+    document
+      .querySelector("#current-temperature")
+      .classList.remove("current-temperature-smaller");
+  }
 }
 
 let celsius = document.querySelector("#celsius");
@@ -90,11 +111,19 @@ fahrenheit.addEventListener("click", changeToFahrenheit);
 
 //Display current temperature, city name, etc.
 function displayCurrentWeather(response) {
-  celsiusTemperature = response.data.temperature.current;
+  celsiusTemperature = Math.round(response.data.temperature.current);
 
-  document.querySelector("#current-temperature").innerHTML = Math.round(
-    response.data.temperature.current
-  );
+  document.querySelector("#current-temperature").innerHTML = celsiusTemperature;
+
+  if (celsiusTemperature < -9 || celsiusTemperature > 99) {
+    document
+      .querySelector("#current-temperature")
+      .classList.add("current-temperature-smaller");
+  } else {
+    document
+      .querySelector("#current-temperature")
+      .classList.remove("current-temperature-smaller");
+  }
 
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.temperature.feels_like
