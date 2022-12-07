@@ -58,6 +58,7 @@ input {
   font-weight: 700;
   font-size: 48px;
   margin: 0 auto;
+  line-height: 54px;
 }
 
 #country {
@@ -65,7 +66,8 @@ input {
   font-weight: 500;
   font-size: 24px;
   margin: 0 auto;
-  padding-left: 10px;
+  line-height: 30px;
+  padding-bottom: 10px;
 }
 
 h5 {
@@ -111,8 +113,9 @@ div.current-temperature {
   font-weight: 500;
   font-size: 16px;
   color: #1ab2a8;
-  position: relative;
-  bottom: 30px;
+  /*position: relative;
+  bottom: 30px;*/
+  text-align: center;
 }
 
 .other-current-data {

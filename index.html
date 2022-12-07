@@ -30,12 +30,13 @@
         </form>
       </div>
       <div class="row todays-weather">
-        <div class="col-6">
-          <span id="city">City</span> <span id="country">Country</span>
+        <div class="col-8">
+          <p id="city">City</p>
+          <p id="country">Country</p>
           <h5 id="date"></h5>
 
           <div class="row">
-            <div class="col current-temperature">
+            <div class="col-5 current-temperature">
               <span id="current-temperature"></span>
               <span class="degree"
                 ><a href="#" id="celsius" class="active-degree">°C</a>|<a
@@ -46,16 +47,16 @@
               >
             </div>
             <div class="col other-current-data">
-              Feels like <span id="feels-like"></span>°C
+              <span id="description"> </span>
               <br />
               Humidity: <span id="humidity"></span>%
               <br />
               Wind: <span id="wind"></span> km/h
             </div>
           </div>
-          <div class="row"><span id="description"> </span></div>
         </div>
-        <div class="col-6">
+
+        <div class="col-4">
           <img
             id="icon"
             src=""

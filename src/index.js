@@ -70,16 +70,6 @@ function changeToCelsius(event) {
   activeDegree.classList.add("active-degree");
   let inactiveDegree = document.querySelector("#fahrenheit");
   inactiveDegree.classList.remove("active-degree");
-
-  if (celsiusTemperature < -9 || celsiusTemperature > 99) {
-    document
-      .querySelector("#current-temperature")
-      .classList.add("current-temperature-smaller");
-  } else {
-    document
-      .querySelector("#current-temperature")
-      .classList.remove("current-temperature-smaller");
-  }
 }
 
 function changeToFahrenheit(event) {
@@ -91,16 +81,6 @@ function changeToFahrenheit(event) {
   activeDegree.classList.add("active-degree");
   let inactiveDegree = document.querySelector("#celsius");
   inactiveDegree.classList.remove("active-degree");
-
-  if (fahrenheitTemperature < -9 || fahrenheitTemperature > 99) {
-    document
-      .querySelector("#current-temperature")
-      .classList.add("current-temperature-smaller");
-  } else {
-    document
-      .querySelector("#current-temperature")
-      .classList.remove("current-temperature-smaller");
-  }
 }
 
 let celsius = document.querySelector("#celsius");
@@ -115,19 +95,6 @@ function displayCurrentWeather(response) {
 
   document.querySelector("#current-temperature").innerHTML = celsiusTemperature;
 
-  if (celsiusTemperature < -9 || celsiusTemperature > 99) {
-    document
-      .querySelector("#current-temperature")
-      .classList.add("current-temperature-smaller");
-  } else {
-    document
-      .querySelector("#current-temperature")
-      .classList.remove("current-temperature-smaller");
-  }
-
-  document.querySelector("#feels-like").innerHTML = Math.round(
-    response.data.temperature.feels_like
-  );
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.temperature.humidity
   );
