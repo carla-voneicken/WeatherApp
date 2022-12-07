@@ -85,14 +85,9 @@ div.current-temperature {
   font-weight: 700;
   font-size: 48px;
   margin: 0 auto;
-  padding: 30px 20px 20px 20px;
+  padding: 20px;
   line-height: normal;
   text-align: right;
-}
-
-.current-temperature-smaller {
-  letter-spacing: -1px;
-  font-size: 34px;
 }
 
 .degree {
@@ -113,21 +108,19 @@ div.current-temperature {
   font-weight: 500;
   font-size: 16px;
   color: #1ab2a8;
-  /*position: relative;
-  bottom: 30px;*/
   text-align: center;
 }
 
 .other-current-data {
   margin: 0 auto;
   color: #6f7474;
-  padding: 20px;
+  padding: 10px 20px 20px 20px;
 }
 
 .image-current-weather {
   width: 180px;
   display: block;
-  margin: 20px auto;
+  margin: 0 auto;
 }
 
 .image-forecast {
