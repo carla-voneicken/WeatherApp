@@ -17,6 +17,7 @@
   </head>
   <body>
     <div class="container">
+      <!--Search city form-->
       <div class="row search">
         <form id="search-city">
           <input type="text" placeholder="Enter city" id="city-input" />
@@ -29,12 +30,15 @@
           />
         </form>
       </div>
+
+      <!--City, country, date-->
       <div class="row todays-weather">
         <div class="col-8">
           <p id="city">City</p>
           <p id="country">Country</p>
           <h5 id="date"></h5>
 
+          <!--Current temperature-->
           <div class="row">
             <div class="col-5 current-temperature">
               <span id="current-temperature"></span>
@@ -46,6 +50,7 @@
                 ></span
               >
             </div>
+            <!--Other current data-->
             <div class="col other-current-data">
               <span id="description"> </span>
               <br />
@@ -55,7 +60,7 @@
             </div>
           </div>
         </div>
-
+        <!--Weather icon-->
         <div class="col-4">
           <img
             id="icon"
@@ -65,6 +70,7 @@
           />
         </div>
       </div>
+      <!--Weather forecast-->
       <div class="row coming-weather">
         <div class="col forecast">
           <img
@@ -113,6 +119,7 @@
         </div>
       </div>
     </div>
+    <!--Reference-->
     <div class="reference">
       <a href="https://github.com/Joodie66/weather-app" target="_blank"
         >Open-source code</a
