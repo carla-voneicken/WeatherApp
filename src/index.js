@@ -7,37 +7,53 @@ function getDoubleDigits(digit) {
   }
 }
 
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+function getCurrentTime(coordinates) {
+  apiKey = "R7G2IHJQIUY6";
+  apiUrl = `http://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=position&lat=${coordinates.latitude}&lng=${coordinates.longitude}`;
 
-let minute = getDoubleDigits(now.getMinutes());
-let hour = getDoubleDigits(now.getHours());
-let date = now.getDate();
-let day = days[now.getDay()];
-let month = months[now.getMonth()];
-let year = now.getFullYear();
+  axios.get(apiUrl).then(changeCurrentTime);
+}
+
+function changeCurrentTime(response) {
+  console.log(response.data.formatted);
+  console.log(response.data.timestamp);
+  let now = new Date(response.data.timestamp * 1000);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  let minute = getDoubleDigits(now.getMinutes());
+  let hour = getDoubleDigits(now.getHours());
+  let date = now.getDate();
+  let day = days[now.getDay()];
+  let month = months[now.getMonth()];
+  let year = now.getFullYear();
+
+  let ordinalRank = getOrdinalRank(date);
+
+  let currentDate = document.querySelector("h5");
+  currentDate.innerHTML = `${day}, ${month} ${date}${ordinalRank} ${year}, ${hour}:${minute}`;
+}
 
 //Determine ordinal rank of a date (e.g. 1st, 2nd, 3rd,)
 function getOrdinalRank(day) {
@@ -55,11 +71,6 @@ function getOrdinalRank(day) {
     }
   }
 }
-let ordinalRank = getOrdinalRank(date);
-
-//Change date
-let currentDate = document.querySelector("h5");
-currentDate.innerHTML = `${day}, ${month} ${date}${ordinalRank} ${year}, ${hour}:${minute}`;
 
 //Change Fahrenheit and Celcius
 function changeToCelsius(event) {
@@ -102,7 +113,6 @@ function formatDay(timestamp) {
 
 //Call API for Forecast
 function displayForecast(response) {
-  console.log(response.data);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
@@ -155,6 +165,8 @@ function displayCurrentWeather(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", `images/${response.data.condition.icon}.png`);
   iconElement.setAttribute("alt", `${response.data.condition.icon}`);
+
+  getCurrentTime(response.data.coordinates);
 }
 
 //Get data from weather API for specific city
