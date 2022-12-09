@@ -89,6 +89,12 @@ celsius.addEventListener("click", changeToCelsius);
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", changeToFahrenheit);
 
+//Call API for Forecast
+
+function displayForecast(response) {
+  console.log(response.data);
+}
+
 //Display current temperature, city name, etc.
 function displayCurrentWeather(response) {
   celsiusTemperature = Math.round(response.data.temperature.current);
@@ -114,18 +120,21 @@ function displayCurrentWeather(response) {
 }
 
 //Get data from weather API for specific city
+function getWeatherData(city) {
+  let unit = "metric";
+  let apiKey = "004446411fd5455tcb3a0d7cfdoca57a";
+  let apiUrlCurrent = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
+  let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${unit}
+`;
+
+  axios.get(apiUrlCurrent).then(displayCurrentWeather);
+  axios.get(apiUrlForecast).then(displayForecast);
+}
+
 function handleSubmit(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-input");
   getWeatherData(cityInput.value);
-}
-
-function getWeatherData(city) {
-  let unit = "metric";
-  let apiKey = "004446411fd5455tcb3a0d7cfdoca57a";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
-
-  axios.get(apiUrl).then(displayCurrentWeather);
 }
 
 let cityForm = document.querySelector("#search-city");
@@ -137,9 +146,12 @@ function getWeatherDataCurrentLocation(position) {
   let lat = position.coords.latitude;
   let unit = "metric";
   let apiKey = "004446411fd5455tcb3a0d7cfdoca57a";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=${unit}`;
+  let apiUrlCurrent = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=${unit}`;
+  let apiUrlForecast = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&key=${apiKey}&units=${unit}
+`;
 
-  axios.get(apiUrl).then(displayCurrentWeather);
+  axios.get(apiUrlCurrent).then(displayCurrentWeather);
+  axios.get(apiUrlForecast).then(displayForecast);
 }
 
 let currentLocationButton = document.querySelector("#current-location-button");
