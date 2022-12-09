@@ -93,6 +93,26 @@ fahrenheit.addEventListener("click", changeToFahrenheit);
 
 function displayForecast(response) {
   console.log(response.data);
+
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Sat", "Sun", "Mon", "Tue", "Wed"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col forecast">
+          <img src="images/rain-day.png" alt="" class="image-forecast" />
+          <div class="date-forecast">${day}</div>
+          <div class="temperature-forecast">
+            <span class="forecast-temperature-max"></span>°C/
+            <span class="forecast-temperature-min"></span>°C
+          </div>
+        </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 //Display current temperature, city name, etc.
