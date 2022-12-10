@@ -9,8 +9,8 @@ function getDoubleDigits(digit) {
 
 function getCurrentTime(coordinates) {
   apiKey = "R7G2IHJQIUY6";
-  apiUrl = `http://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=position&lat=${coordinates.latitude}&lng=${coordinates.longitude}`;
-
+  apiUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=position&lat=${coordinates.latitude}&lng=${coordinates.longitude}`;
+  console.log(apiUrl);
   axios.get(apiUrl).then(changeCurrentTime);
 }
 
@@ -145,6 +145,7 @@ function displayForecast(response) {
 
 //Display current temperature, city name, etc.
 function displayCurrentWeather(response) {
+  console.log(response.data);
   celsiusTemperature = Math.round(response.data.temperature.current);
 
   document.querySelector("#current-temperature").innerHTML = celsiusTemperature;
