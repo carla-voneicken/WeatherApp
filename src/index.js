@@ -10,13 +10,13 @@ function getDoubleDigits(digit) {
 function getCurrentTime(coordinates) {
   apiKey = "R7G2IHJQIUY6";
   apiUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=position&lat=${coordinates.latitude}&lng=${coordinates.longitude}`;
-  console.log(apiUrl);
+  //console.log(apiUrl);
   axios.get(apiUrl).then(changeCurrentTime);
 }
 
 function changeCurrentTime(response) {
-  console.log(response.data.formatted);
-  console.log(response.data.timestamp);
+  //console.log(response.data.formatted);
+  //console.log(response.data.timestamp);
   let now = new Date(response.data.timestamp * 1000);
   let days = [
     "Sunday",
@@ -145,7 +145,7 @@ function displayForecast(response) {
 
 //Display current temperature, city name, etc.
 function displayCurrentWeather(response) {
-  console.log(response.data);
+  //console.log(response.data);
   celsiusTemperature = Math.round(response.data.temperature.current);
 
   document.querySelector("#current-temperature").innerHTML = celsiusTemperature;
@@ -198,9 +198,8 @@ function getWeatherDataCurrentLocation(position) {
   let unit = "metric";
   let apiKey = "004446411fd5455tcb3a0d7cfdoca57a";
   let apiUrlCurrent = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=${unit}`;
-  let apiUrlForecast = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&key=${apiKey}&units=${unit}
-`;
-
+  let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?lat=${lat}&lon=${lon}&key=${apiKey}&units=${unit}`;
+  console.log(apiUrlForecast);
   axios.get(apiUrlCurrent).then(displayCurrentWeather);
   axios.get(apiUrlForecast).then(displayForecast);
 }
