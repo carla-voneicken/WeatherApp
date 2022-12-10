@@ -72,34 +72,6 @@ function getCurrentTime(coordinates) {
   axios.get(apiUrl).then(changeCurrentTime);
 }
 
-//Change Fahrenheit and Celcius
-function changeToCelsius(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#current-temperature");
-  temperature.innerHTML = Math.round(celsiusTemperature);
-  let activeDegree = document.querySelector("#celsius");
-  activeDegree.classList.add("active-degree");
-  let inactiveDegree = document.querySelector("#fahrenheit");
-  inactiveDegree.classList.remove("active-degree");
-}
-
-function changeToFahrenheit(event) {
-  event.preventDefault();
-  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
-  let temperature = document.querySelector("#current-temperature");
-  temperature.innerHTML = fahrenheitTemperature;
-  let activeDegree = document.querySelector("#fahrenheit");
-  activeDegree.classList.add("active-degree");
-  let inactiveDegree = document.querySelector("#celsius");
-  inactiveDegree.classList.remove("active-degree");
-}
-
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", changeToCelsius);
-
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", changeToFahrenheit);
-
 //Determine date for forecast
 function formatDay(timestamp) {
   let forecastDate = new Date(timestamp * 1000);
@@ -146,9 +118,9 @@ function displayForecast(response) {
 //Display current temperature, city name, etc.
 function displayCurrentWeather(response) {
   //console.log(response.data);
-  celsiusTemperature = Math.round(response.data.temperature.current);
-
-  document.querySelector("#current-temperature").innerHTML = celsiusTemperature;
+  document.querySelector("#current-temperature").innerHTML = Math.round(
+    response.data.temperature.current
+  );
 
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.temperature.humidity
@@ -208,8 +180,6 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", function () {
   navigator.geolocation.getCurrentPosition(getWeatherDataCurrentLocation);
 });
-
-let celsiusTemperature = null;
 
 //Display default city on loading
 getWeatherData("Berlin");
