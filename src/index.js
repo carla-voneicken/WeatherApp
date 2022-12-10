@@ -7,11 +7,21 @@ function getDoubleDigits(digit) {
   }
 }
 
-function getCurrentTime(coordinates) {
-  apiKey = "R7G2IHJQIUY6";
-  apiUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=position&lat=${coordinates.latitude}&lng=${coordinates.longitude}`;
-  //console.log(apiUrl);
-  axios.get(apiUrl).then(changeCurrentTime);
+//Determine ordinal rank of a date (e.g. 1st, 2nd, 3rd,)
+function getOrdinalRank(day) {
+  if (day === 1 || day === 21 || day === 31) {
+    return "st";
+  } else {
+    if (day === 2 || day === 22) {
+      return "nd";
+    } else {
+      if (day === 3 || day === 23) {
+        return "rd";
+      } else {
+        return "th";
+      }
+    }
+  }
 }
 
 function changeCurrentTime(response) {
@@ -55,21 +65,11 @@ function changeCurrentTime(response) {
   currentDate.innerHTML = `${day}, ${month} ${date}${ordinalRank} ${year}, ${hour}:${minute}`;
 }
 
-//Determine ordinal rank of a date (e.g. 1st, 2nd, 3rd,)
-function getOrdinalRank(day) {
-  if (day === 1 || day === 21 || day === 31) {
-    return "st";
-  } else {
-    if (day === 2 || day === 22) {
-      return "nd";
-    } else {
-      if (day === 3 || day === 23) {
-        return "rd";
-      } else {
-        return "th";
-      }
-    }
-  }
+function getCurrentTime(coordinates) {
+  apiKey = "R7G2IHJQIUY6";
+  apiUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=position&lat=${coordinates.latitude}&lng=${coordinates.longitude}`;
+  //console.log(apiUrl);
+  axios.get(apiUrl).then(changeCurrentTime);
 }
 
 //Change Fahrenheit and Celcius
@@ -199,7 +199,7 @@ function getWeatherDataCurrentLocation(position) {
   let apiKey = "004446411fd5455tcb3a0d7cfdoca57a";
   let apiUrlCurrent = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=${unit}`;
   let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?lat=${lat}&lon=${lon}&key=${apiKey}&units=${unit}`;
-  console.log(apiUrlForecast);
+
   axios.get(apiUrlCurrent).then(displayCurrentWeather);
   axios.get(apiUrlForecast).then(displayForecast);
 }
