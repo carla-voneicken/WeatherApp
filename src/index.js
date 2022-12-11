@@ -25,9 +25,12 @@ function getOrdinalRank(day) {
 }
 
 function changeCurrentTime(response) {
-  //console.log(response.data.formatted);
-  //console.log(response.data.timestamp);
-  let now = new Date(response.data.timestamp * 1000);
+  console.log(response.data.formatted);
+  console.log(response.data.timestamp);
+  console.log(response.data.gmtOffset);
+  let now = new Date(
+    (response.data.timestamp - response.data.gmtOffset) * 1000
+  );
   let days = [
     "Sunday",
     "Monday",
