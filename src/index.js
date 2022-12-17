@@ -1,4 +1,4 @@
-//Get values for the current date, including weekdays and months
+//Get double digits for values under 10
 function getDoubleDigits(digit) {
   if (digit < 10) {
     return `0${digit}`;
@@ -24,10 +24,8 @@ function getOrdinalRank(day) {
   }
 }
 
-function changeCurrentTime(response) {
-  console.log(response.data.formatted);
-  console.log(response.data.timestamp);
-  console.log(response.data.gmtOffset);
+//Display current date
+function displayCurrentDate(response) {
   let now = new Date(response.data.timestamp * 1000);
   let days = [
     "Sunday",
@@ -53,8 +51,6 @@ function changeCurrentTime(response) {
     "December",
   ];
 
-  let minute = getDoubleDigits(now.getMinutes());
-  let hour = getDoubleDigits(now.getHours());
   let date = now.getDate();
   let day = days[now.getDay()];
   let month = months[now.getMonth()];
@@ -62,14 +58,17 @@ function changeCurrentTime(response) {
 
   let ordinalRank = getOrdinalRank(date);
 
-  let currentDate = document.querySelector("h5");
+  let currentDate = document.querySelector("#date");
   currentDate.innerHTML = `${day}, ${month} ${date}${ordinalRank} ${year}`;
 }
 
+//Get timestamp for current location
+//(This API isn't perfect because the output of the time is only completely
+//correct if user is in GMT-zone. I couldn't find a good alternative though.)
 function getCurrentTime(coordinates) {
   apiKey = "R7G2IHJQIUY6";
   apiUrl = `https://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=position&lat=${coordinates.latitude}&lng=${coordinates.longitude}`;
-  //console.log(apiUrl);
+
   axios.get(apiUrl).then(changeCurrentTime);
 }
 
@@ -84,7 +83,7 @@ function formatDay(timestamp) {
   return `${day} ${date}.${month}.`;
 }
 
-//Call API for Forecast
+//Display forecast data
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
@@ -116,25 +115,23 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-//Display current temperature, city name, etc.
+//Display current city name and data
 function displayCurrentWeather(response) {
-  //console.log(response.data);
+  document.querySelector("#city").innerHTML = response.data.city;
+  document.querySelector("#country").innerHTML = response.data.country;
+
   document.querySelector("#current-temperature").innerHTML = Math.round(
     response.data.temperature.current
   );
 
+  document.querySelector("#description").innerHTML =
+    response.data.condition.description;
   document.querySelector("#humidity").innerHTML = Math.round(
     response.data.temperature.humidity
   );
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed * 3.6
   );
-
-  document.querySelector("#city").innerHTML = response.data.city;
-  document.querySelector("#country").innerHTML = response.data.country;
-
-  document.querySelector("#description").innerHTML =
-    response.data.condition.description;
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", `images/${response.data.condition.icon}.png`);

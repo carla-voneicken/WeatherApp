@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="src/styles.css" />
     <title>Weather App</title>
   </head>
+
   <body>
     <div class="container">
       <!--Search city form-->
@@ -44,6 +45,7 @@
               <span id="current-temperature"></span>
               <span class="degree">°C</span>
             </div>
+
             <!--Other current data-->
             <div class="col other-current-data">
               <span id="description"> </span>
@@ -54,6 +56,7 @@
             </div>
           </div>
         </div>
+
         <!--Weather icon-->
         <div class="col-4">
           <img
@@ -64,9 +67,11 @@
           />
         </div>
       </div>
+
       <!--Weather forecast (gets injected by JS loop)-->
       <div id="forecast"></div>
     </div>
+
     <!--Reference-->
     <div class="reference">
       <a href="https://github.com/Joodie66/weather-app" target="_blank"
@@ -86,6 +91,7 @@
         width="15"
       />
     </div>
+
     <script src="src/index.js"></script>
   </body>
 </html>
