@@ -28,7 +28,7 @@ function changeCurrentTime(response) {
   console.log(response.data.formatted);
   console.log(response.data.timestamp);
   console.log(response.data.gmtOffset);
-  let now = new Date(response.data.timestamp * 1000 - 3600000);
+  let now = new Date(response.data.timestamp * 1000);
   let days = [
     "Sunday",
     "Monday",
@@ -63,7 +63,7 @@ function changeCurrentTime(response) {
   let ordinalRank = getOrdinalRank(date);
 
   let currentDate = document.querySelector("h5");
-  currentDate.innerHTML = `${day}, ${month} ${date}${ordinalRank} ${year}, ${hour}:${minute}`;
+  currentDate.innerHTML = `${day}, ${month} ${date}${ordinalRank} ${year}`;
 }
 
 function getCurrentTime(coordinates) {
