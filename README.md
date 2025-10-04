@@ -2,7 +2,7 @@
 
 A simple and responsive Weather App for the browser, built with HTML, CSS, and JavaScript.
 
-![App Demo](./WeatherAppDemonstration.gif)
+![App Demo](./demo.gif)
 
 ### ✨ About the Project
 
