@@ -9,6 +9,12 @@ A simple and responsive Weather App for the browser, built with HTML, CSS, and J
 This project was developed as part of the SheCodes Web Development Course.
 It uses the SheCodes Weather API to fetch real-time weather data and display it in a user-friendly interface.
 
+#### Functionality
+
+- Search location by city name or display data for the current location (default)
+- Display the current temperature, humidity, wind and conditions
+- Display the forecast for the next five days (min and max temperature and condition)
+
 ### 🛠️ Built With
 
 - vHTML5
@@ -20,6 +26,7 @@ It uses the SheCodes Weather API to fetch real-time weather data and display it 
 ### 🌍 Deployment
 
 The app is deployed with Netlify and can be viewed here:
+
 👉 [Live Demo on Netlify](https://unique-yeot-45768b.netlify.app)
 
 ### 🎨 Credits
