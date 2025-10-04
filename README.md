@@ -2,6 +2,8 @@
 
 A simple and responsive Weather App for the browser, built with HTML, CSS, and JavaScript.
 
+![App Demo](./WeatherAppDemonstration.gif)
+
 ### ✨ About the Project
 
 This project was developed as part of the SheCodes Web Development Course.
