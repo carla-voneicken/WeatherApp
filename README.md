@@ -6,8 +6,8 @@ A simple and responsive Weather App for the browser, built with HTML, CSS, and J
 
 ### ✨ About the Project
 
-This project was developed as part of the SheCodes Web Development Course.
-It uses the SheCodes Weather API to fetch real-time weather data and display it in a user-friendly interface.
+This project was developed as part of the [SheCodes](https://www.shecodes.io/) Web Development Course.
+It uses an API provided by SheCodes to fetch real-time weather data and display it in a user-friendly interface.
 
 #### Functionality
 
