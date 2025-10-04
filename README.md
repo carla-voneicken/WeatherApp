@@ -36,7 +36,6 @@ Weather icons created by [iconixar](https://www.flaticon.com/authors/iconixar) v
 ### 💡 Future Improvements (optional)
 
 - Add search suggestions and error handling
-- Display a 5-day forecast
 - Implement dark mode
 
 ### 📬 Contact
