@@ -38,7 +38,7 @@ Weather icons created by [iconixar](https://www.flaticon.com/authors/iconixar) v
 - Add search suggestions and error handling
 - Implement dark mode
 
-### 📬 Contact
+### 👩‍💻 Author
 
 Created with 💙 by Carla von Eicken
 [LinkedIn](https://www.linkedin.com/in/carla-von-eicken/) | [GitHub](https://github.com/carla-voneicken)
